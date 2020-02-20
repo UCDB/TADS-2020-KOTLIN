@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+<body>
+  <div id="app">
+    <v-app>
+      <v-content>
+        <v-container>
+         
+            <v-row>
+                    <v-col>
+
+                        <v-card>
+                            <v-img
+                                class="white--text align-end"
+                                height="200px"
+                                src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                            >
+            
+                            <v-card-title>Curso de Android - Kotlin </v-card-title>
+                            <v-card-text>Some text here</v-card-text>
+                        </v-card>
+                    </v-col>
+
+            </v-row>
+
+            <v-row>
+                <v-col>
+
+                    <v-card>
+                     
+        
+                        <v-card-title>Detalhes </v-card-title>
+                        <v-card-text>Some text here</v-card-text>
+                    </v-card>
+                </v-col>
+
+        </v-row>
+
+        <v-row>
+            <v-col>
+
+                <v-card>
+                 
+    
+                    <v-card-title>Tópicos </v-card-title>
+                    <v-card-text>
+                        
+                        
+                        <v-expansion-panels>
+                            <v-expansion-panel
+                              v-for="(item,i) in topicos"
+                              :key="i"
+                            >
+                              <v-expansion-panel-header>{{item.titulo}}</v-expansion-panel-header>
+                              <v-expansion-panel-content>
+                                {{item.sub}}
+                              </v-expansion-panel-content>
+                            </v-expansion-panel>
+                          </v-expansion-panels> 
+                        
+                    </v-card-text>
+                </v-card>
+            </v-col>
+
+    </v-row>
+       
+           
+
+          
+            
+            
+        </v-container>
+      </v-content>
+    </v-app>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      vuetify: new Vuetify(),
+      data:{
+         topicos:[
+             { titulo:"Introdução ao Android", sub:""} ,
+             { titulo:"Arquitetura ao Android", sub:""},
+             { titulo:"Ambiente de desenvolvimento", sub:`Instalando o Android Studio, 
+                                                          Preparando o ambiente`},
+           
+             { titulo:"Conceitos Básicos", sub:`Criando o primeiro projeto,
+                                                Entendendo a estrutura do projeto,
+                                                Adição de dependências,
+                                                Activities,
+                                                Views,
+                                                Resources e a classe R`},
+
+            {titulo:"Kotlin", sub:`Principais recursos da linguagem,
+                                    Null Safe,
+                                    Data Class,
+                                    Companion Objects`}
+           
+            ,{titulo:"Interface Gráfica",sub:`Criando um layout XML,
+                                                Text Views,
+                                                Edit Text,
+                                                Button,
+                                                Gerenciadores de layout,
+                                                LinearLayout,
+                                                RelativeLayout,
+                                                ConstraintLayout`}
+            ,{titulo:"Activities",sub:`Criando uma activity
+                                        Ciclo de vida das activities
+                                        Vinculando uma activity a um layout
+                                        Declarando Activities no MANIFEST
+                                        Bind de elementos de tela e suas funções
+                                        `}
+            ,{titulo:"Intents",sub:`Navegação entre telas
+                                    Passagem de parâmetros entre telas
+                                    `}
+            ,{titulo:"ListView",sub:`Criando um listView padrão
+                                    ViewHolder
+                                    Adapter
+                                    ListView Personalizado
+                                    `}
+            ,{titulo:"Recursos",sub:`Interagindo com a câmera do dispositivo
+                                    Capturando imagens
+                                    Interagindo com o GPS do dispositivo
+                                    `}
+            ,{titulo:"Banco de Dados SQLite",sub:`Criando um banco de dados
+                                                    Utilizando a biblioteca de persistência Room
+                                                    Manipulando dados do Banco de Dados
+
+                                                    `}
+
+            ]
+      }
+    })
+  </script>
+</body>
+</html>
