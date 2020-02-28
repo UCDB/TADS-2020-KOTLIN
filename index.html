@@ -19,11 +19,11 @@
                 <v-img
                 class="white--text align-end"
                 height="200px"
-                src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                :src="curso.imgTopo"
                 >
                 
-                <v-card-title>Curso de Android - Kotlin </v-card-title>
-                <v-card-text>Some text here</v-card-text>
+                <v-card-title>{{curso.titulo}} </v-card-title>
+                <v-card-text>{{curso.subTitulo}}</v-card-text>
               </v-card>
             </v-col>
             
@@ -37,14 +37,7 @@
                 <v-card-title>Detalhes </v-card-title>
                 <v-card-text>
 
-                  Este curso tem por objetivo 
-                  introduzir os fundamentos do
-                   desenvolvimento mobile para 
-                   Android do básico, 
-                   até o uso de frameworks, 
-                   com manipulação de banco de dados local, 
-                   requisições HTTP e uso de recursos de hardware.
-
+                {{curso.detalhes}}
 
                 </v-card-text>
               </v-card>
@@ -57,11 +50,7 @@
                 <v-card-title>Metodologia </v-card-title>
                 <v-card-text>
 
-              Todo o curso é baseado em metologia ativa 
-              utilizando o conceito de PBL (Problem Based Learning)
-                onde serão desevolvidos projetos basedo em problemas reais
-                proporcionando um aprendizado da tecnologia Android com Kotlin 
-                de forma totalmente aplicada.
+                    {{curso.metodologia}}
                 </v-card-text>
               </v-card>
             </v-col>
@@ -80,7 +69,7 @@
                   
                   <v-expansion-panels>
                     <v-expansion-panel
-                    v-for="(item,i) in topicos"
+                    v-for="(item,i) in curso.topicos"
                     :key="i"
                     >
                     <v-expansion-panel-header>{{item.titulo}}</v-expansion-panel-header>
@@ -101,23 +90,18 @@
 
                 <v-col>
                   <v-card class="text-center pt-5 pb-5">
-                   <img width="250" src="img/IMG1.JPG">
+                   <img width="250" :src="curso.imagens[0].url">
                   </v-card>
     
                 </v-col>
                 <v-col>
                   <v-card class="text-center pt-5 pb-5">
-                   <img width="250" src="img/IMG2.JPG">
+                   <img width="250" :src="curso.imagens[1].url">
                   </v-card>
     
                 </v-col>
     
-                <v-col>
-                  <v-card class="text-center pt-5 pb-5">
-                   <img width="250" src="img/IMG3.JPG">
-                  </v-card>
-    
-                </v-col>
+             
 
               </v-container>
             </v-card>
@@ -131,13 +115,16 @@
               <v-card>
                   <v-card-title>Próxima Turma</v-card-title>
                   <v-card-text>
-                    Início 8/05/2020 até 24/07/2020
-                  </v-card-text>
-                  <v-card-text>
-                    Todas as Sextas das 19:00 às 22:00
-                  </v-card-text>
-                  <v-card-text>
-                   Carga Horária: 40 horas
+
+                    <ul>
+                      <li>{{curso.turma.inicio}} </li>
+                    
+                      <li>{{curso.turma.dias}}</li>
+                    
+                      <li>{{curso.turma.cargaHoraria}}</li>
+                    
+                      
+                   </ul>
                   </v-card-text>
               </v-card>
               
@@ -154,21 +141,17 @@
                         <v-col> 
                           <a style="text-decoration: none;" target="_blank" href="http://bit.ly/whatsapp-ht2">
                             <v-icon>mdi-whatsapp</v-icon>
-                            (67)99290-3322
+                           {{contato.whatsApp}}
                           </a>
                           
                           <ul>
-                            <li>(67)3387-2941</li>
-                            <li>contato@hightechcursos.com.br</li>
+                            <li>{{contato.telefone}}</li>
+                            <li>{{contato.email}}</li>
                           </ul> 
               
                       </v-col>
                     
-                        <v-col>
-
-                          Todas as Sextas das 19:00 às 22:00
-                        
-                        </v-col>
+                       
                       </v-row>
 
                     </v-container>
@@ -213,58 +196,107 @@
     el: '#app',
     vuetify: new Vuetify(),
     data:{
-      topicos:[
-      { titulo:"Introdução ao Android", sub:""} ,
-      { titulo:"Arquitetura ao Android", sub:""},
-      { titulo:"Ambiente de desenvolvimento", sub:`Instalando o Android Studio, 
-      Preparando o ambiente`},
       
-      { titulo:"Conceitos Básicos", sub:`Criando o primeiro projeto,
-      Entendendo a estrutura do projeto,
-      Adição de dependências,
-      Activities,
-      Views,
-      Resources e a classe R`},
+
+      curso:{
+        titulo: "Curso de Android - Kotlin",
+
+        subTitulo:"devenvolvedor mobile",
+
+        imgTopo:"img/top2.png",
+        
+        metodologia:`Todo o curso é baseado em metologia ativa 
+                utilizando o conceito de PBL (Problem Based Learning)
+                onde serão desevolvidos projetos basedo em problemas reais
+                proporcionando um aprendizado da tecnologia Android com Kotlin 
+                de forma totalmente aplicada.`  ,
+
+        detalhes:`Este curso tem por objetivo 
+                    introduzir os fundamentos do
+                    desenvolvimento mobile para 
+                    Android do básico, 
+                    até o uso de frameworks, 
+                    com manipulação de banco de dados local, 
+                    requisições HTTP e uso de recursos de hardware.
+          `,
+        imagens:[
+          {
+            url:'img/IMG1.JPG'
+          },
+          {
+            url:'img/IMG2.JPG'
+          }
+        ],
+        turma:{
+          inicio:"Início 05/06/2020",
+          dias:  "Todas as Sextas das 19:00 às 22:00",
+          cargaHoraria: "Carga Horária: 40 horas",
+          diasSemana: "Todas as Sextas das 19:00 às 22:00"
+        },
+
+        topicos:[
+        { titulo:"Introdução ao Android", sub:""} ,
+        { titulo:"Arquitetura ao Android", sub:""},
+        { titulo:"Ambiente de desenvolvimento", sub:`Instalando o Android Studio, 
+        Preparando o ambiente`},
+        
+        { titulo:"Conceitos Básicos", sub:`Criando o primeiro projeto,
+        Entendendo a estrutura do projeto,
+        Adição de dependências,
+        Activities,
+        Views,
+        Resources e a classe R`},
+        
+        {titulo:"Kotlin", sub:`Principais recursos da linguagem,
+        Null Safe,
+        Data Class,
+        Companion Objects`}
+        
+        ,{titulo:"Interface Gráfica",sub:`Criando um layout XML,
+        Text Views,
+        Edit Text,
+        Button,
+        Gerenciadores de layout,
+        LinearLayout,
+        RelativeLayout,
+        ConstraintLayout`}
+        ,{titulo:"Activities",sub:`Criando uma activity
+        Ciclo de vida das activities
+        Vinculando uma activity a um layout
+        Declarando Activities no MANIFEST
+        Bind de elementos de tela e suas funções
+        `}
+        ,{titulo:"Intents",sub:`Navegação entre telas
+        Passagem de parâmetros entre telas
+        `}
+        ,{titulo:"ListView",sub:`Criando um listView padrão
+        ViewHolder
+        Adapter
+        ListView Personalizado
+        `}
+        ,{titulo:"Recursos",sub:`Interagindo com a câmera do dispositivo
+        Capturando imagens
+        Interagindo com o GPS do dispositivo
+        `}
+        ,{titulo:"Banco de Dados SQLite",sub:`Criando um banco de dados
+        Utilizando a biblioteca de persistência Room
+        Manipulando dados do Banco de Dados
+        
+        `}
+        
+        ]
+
+        },
+
+      contato:{
+        whatsApp:"(67)99290-3322",
+        telefone: "(67)3387-2941",
+        email: "contato@hightechcursos.com.br"
+      }
+     
+        
+      },
       
-      {titulo:"Kotlin", sub:`Principais recursos da linguagem,
-      Null Safe,
-      Data Class,
-      Companion Objects`}
-      
-      ,{titulo:"Interface Gráfica",sub:`Criando um layout XML,
-      Text Views,
-      Edit Text,
-      Button,
-      Gerenciadores de layout,
-      LinearLayout,
-      RelativeLayout,
-      ConstraintLayout`}
-      ,{titulo:"Activities",sub:`Criando uma activity
-      Ciclo de vida das activities
-      Vinculando uma activity a um layout
-      Declarando Activities no MANIFEST
-      Bind de elementos de tela e suas funções
-      `}
-      ,{titulo:"Intents",sub:`Navegação entre telas
-      Passagem de parâmetros entre telas
-      `}
-      ,{titulo:"ListView",sub:`Criando um listView padrão
-      ViewHolder
-      Adapter
-      ListView Personalizado
-      `}
-      ,{titulo:"Recursos",sub:`Interagindo com a câmera do dispositivo
-      Capturando imagens
-      Interagindo com o GPS do dispositivo
-      `}
-      ,{titulo:"Banco de Dados SQLite",sub:`Criando um banco de dados
-      Utilizando a biblioteca de persistência Room
-      Manipulando dados do Banco de Dados
-      
-      `}
-      
-      ]
-    }
   })
 </script>
 </body>
